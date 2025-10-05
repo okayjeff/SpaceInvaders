@@ -49,12 +49,7 @@ int main() {
       }
     }
     window.clear(sf::Color::Black);
-
-    for (auto &entity: Game::entities) {
-      entity->update(deltaTime);
-      entity->render(window);
-    }
-
+    Game::update(window, deltaTime);
     window.display();
   }
 
