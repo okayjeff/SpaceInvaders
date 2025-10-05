@@ -14,7 +14,7 @@ class Bullet : public Entity
     Bullet(sf::Vector2f pos, sf::Color col);
 
     void update(float dt) override;
-    void render(sf::RenderWindow &window) override;
+    void render(sf::RenderTexture &canvas) override;
 };
 
 #endif // SPACEINVADERS_BULLET_H

@@ -15,15 +15,9 @@ class Player : public Entity
 
     void update(float dt) override;
 
-    void setVelocity(float x, float y)
-    {
-        velocity = {x, y};
-    }
+    void setVelocity(float x, float y);
 
-    void render(sf::RenderWindow &window) override
-    {
-        window.draw(*shape);
-    }
+    void render(sf::RenderTexture &canvas) override;
 };
 
 #endif // SPACEINVADERS_PLAYER_H

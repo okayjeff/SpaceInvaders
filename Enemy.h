@@ -8,7 +8,7 @@ class Enemy : public Entity
   public:
     Enemy(sf::Vector2f pos, sf::Color col);
 
-    void render(sf::RenderWindow &window) override;
+    void render(sf::RenderTexture &canvas) override;
     void update(float dt) override;
 };
 

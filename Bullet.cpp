@@ -14,7 +14,7 @@ void Bullet::update(float dt)
         markedForRemoval = true;
     }
 }
-void Bullet::render(sf::RenderWindow &window)
+void Bullet::render(sf::RenderTexture &canvas)
 {
-    window.draw(*shape);
+    canvas.draw(*shape);
 }

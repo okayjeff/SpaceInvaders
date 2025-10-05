@@ -4,13 +4,23 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({static_cast<unsigned>(CAM_WIDTH), static_cast<unsigned>(CAM_HEIGHT)}),
+    sf::RenderWindow window(sf::VideoMode({static_cast<unsigned>(WINDOW_WIDTH), static_cast<unsigned>(WINDOW_HEIGHT)}),
                             "SpaceInvaders");
     sf::Clock clock;
     window.setFramerateLimit(60);
 
-    sf::View view(sf::FloatRect({0.f, 0.f}, {CAM_WIDTH, CAM_HEIGHT}));
-    window.setView(view);
+    sf::RenderTexture gameCanvas({static_cast<unsigned>(CAM_WIDTH), static_cast<unsigned>(CAM_HEIGHT)});
+    sf::Sprite gameSprite(gameCanvas.getTexture());
+    gameCanvas.setSmooth(false);
+
+    float scaleX = WINDOW_WIDTH / CAM_WIDTH;
+    float scaleY = WINDOW_HEIGHT / CAM_HEIGHT;
+    float scale = std::min(scaleX, scaleY);
+    gameSprite.setScale(sf::Vector2f(scale, scale));
+
+    float offsetX = (WINDOW_WIDTH - CAM_WIDTH * scale) / 2.0f;
+    float offsetY = (WINDOW_HEIGHT - CAM_HEIGHT * scale) / 2.0f;
+    gameSprite.setPosition(sf::Vector2f(offsetX, offsetY));
 
     Game::start();
 
@@ -25,8 +35,12 @@ int main()
                 window.close();
             }
         }
+        gameCanvas.clear(sf::Color::Black);
+        Game::update(gameCanvas, deltaTime);
+        gameCanvas.display();
+
         window.clear(sf::Color::Black);
-        Game::update(window, deltaTime);
+        window.draw(gameSprite);
         window.display();
     }
 

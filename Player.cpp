@@ -31,3 +31,13 @@ void Player::update(float dt)
         Game::addEntity(std::make_unique<Bullet>(pos, sf::Color::White));
     }
 }
+
+void Player::render(sf::RenderTexture &canvas)
+{
+    canvas.draw(*shape);
+}
+
+void Player::setVelocity(float x, float y)
+{
+    velocity = {x, y};
+}

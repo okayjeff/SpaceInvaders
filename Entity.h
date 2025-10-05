@@ -23,7 +23,7 @@ class Entity
     virtual ~Entity() = default;
 
     virtual void update(float dt) = 0;
-    virtual void render(sf::RenderWindow &window) = 0;
+    virtual void render(sf::RenderTexture &canvas) = 0;
 
     sf::Vector2f getPosition() const
     {
