@@ -12,6 +12,7 @@ class Entity {
   public:
   std::unique_ptr<sf::Shape> shape;
   sf::Vector2f velocity{0.f, 0.f};
+  bool markedForRemoval{false};
 
   Entity(std::unique_ptr<sf::Shape> shp, sf::Vector2f pos, sf::Color col) :
       shape(std::move(shp)) {

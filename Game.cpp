@@ -34,11 +34,15 @@ void Game::addEntity(std::unique_ptr<Entity> entity) {
 
 void Game::update(sf::RenderWindow &window, float dt) {
   addQueue.clear();
-  removeQueue.clear();
 
   for (auto &entity: entities) {
     entity->update(dt);
     entity->render(window);
+    entities.erase(
+    std::remove_if(entities.begin(), entities.end(),
+        [](auto& e) { return e->markedForRemoval; }),
+    entities.end()
+);
   }
 
   for (auto &ptr : addQueue) {

@@ -21,6 +21,7 @@ class Game {
   static void spawnPlayer();
   static void spawnEnemies();
   static void addEntity(std::unique_ptr<Entity> entity);
+  static void removeEntity(std::unique_ptr<Entity> entity);
   static void update(sf::RenderWindow &window, float dt);
 };
 
