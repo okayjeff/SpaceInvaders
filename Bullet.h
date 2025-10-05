@@ -5,7 +5,9 @@
 
 
 class Bullet : public Entity {
-public:
+  float SPEED{10.f};
+
+  public:
   Bullet(sf::Vector2f pos, sf::Color col) :
       Entity(std::make_unique<sf::CircleShape>(2.f), pos, col) {}
 

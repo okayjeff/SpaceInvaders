@@ -5,7 +5,9 @@
 
 
 class Entity {
-  float speed{0.f};
+  float SPEED{0.f};
+  int TILE_WIDTH{16};
+  sf::Vector2<int> SPRITE_SHEET_POS{0, 0};
 
   public:
   std::unique_ptr<sf::Shape> shape;

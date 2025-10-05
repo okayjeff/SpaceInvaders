@@ -25,6 +25,7 @@ void Player::update(float dt) {
 
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && shootTimer <= 0.0f) {
     shootTimer = SHOOT_DELAY;
-
+    sf::Vector2f pos = this->getPosition();
+    Game::entities.push_back(std::make_unique<Bullet>(pos, sf::Color::White));
   }
 }

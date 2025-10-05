@@ -38,8 +38,7 @@ int main() {
   sf::Clock clock;
   window.setFramerateLimit(60);
 
-  Game game{};
-  game.start();
+  Game::start();
 
   while (window.isOpen()) {
     float deltaTime = clock.restart().asSeconds();
@@ -51,7 +50,7 @@ int main() {
     }
     window.clear(sf::Color::Black);
 
-    for (const auto &entity: game.entities) {
+    for (auto &entity: Game::entities) {
       entity->update(deltaTime);
       entity->render(window);
     }

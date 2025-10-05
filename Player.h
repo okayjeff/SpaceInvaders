@@ -7,7 +7,7 @@ constexpr float SHOOT_DELAY = 0.5f;
 
 class Player : public Entity {
   float shootTimer {0.f};
-  float speed {250.f};
+  float speed {500.f};
 
 public:
   Player(sf::Vector2f pos, sf::Color col) :
