@@ -10,14 +10,13 @@ class Entity
     sf::Vector2<int> SPRITE_SHEET_POS{0, 0};
 
   public:
-    std::unique_ptr<sf::Shape> shape;
+    sf::Texture texture;
+    sf::Sprite sprite;
     sf::Vector2f velocity{0.f, 0.f};
     bool markedForRemoval{false};
 
-    Entity(std::unique_ptr<sf::Shape> shp, sf::Vector2f pos, sf::Color col) : shape(std::move(shp))
+    Entity(sf::Vector2f pos) : sprite(texture)
     {
-        shape->setFillColor(col);
-        shape->setPosition(pos);
     }
 
     virtual ~Entity() = default;
@@ -27,12 +26,12 @@ class Entity
 
     sf::Vector2f getPosition() const
     {
-        return shape->getPosition();
+        return sprite.getPosition();
     }
 
     void move(float x, float y)
     {
-        shape->move({x, y});
+        sprite.move({x, y});
     }
 };
 

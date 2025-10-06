@@ -11,7 +11,7 @@ class Bullet : public Entity
     float lifetime;
 
   public:
-    Bullet(sf::Vector2f pos, sf::Color col);
+    Bullet(sf::Vector2f pos);
 
     void update(float dt) override;
     void render(sf::RenderTexture &canvas) override;

@@ -35,9 +35,8 @@ int main()
                 window.close();
             }
         }
-        gameCanvas.clear(sf::Color::Black);
+
         Game::update(gameCanvas, deltaTime);
-        gameCanvas.display();
 
         window.clear(sf::Color::Black);
         window.draw(gameSprite);

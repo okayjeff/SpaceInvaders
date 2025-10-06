@@ -6,7 +6,7 @@
 class Enemy : public Entity
 {
   public:
-    Enemy(sf::Vector2f pos, sf::Color col);
+    Enemy(sf::Vector2f pos);
 
     void render(sf::RenderTexture &canvas) override;
     void update(float dt) override;

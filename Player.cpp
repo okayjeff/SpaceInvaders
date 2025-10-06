@@ -2,8 +2,13 @@
 #include "Bullet.h"
 #include "Game.h"
 
-Player::Player(sf::Vector2f pos, sf::Color col) : Entity(std::make_unique<sf::CircleShape>(16.f, 3), pos, col)
+sf::Texture texture("/Users/jeff/Development/CLionProjects/SpaceInvaders/assets/sprites/SpaceInvaders.png");
+sf::Vector2<int> SPRITE_SHEET_POS{4, 0};
+
+Player::Player(sf::Vector2f pos) : Entity(pos)
 {
+    sprite.setTexture(texture);
+    sprite.setTextureRect(sf::IntRect({4 * 16, 0}, {16, 16}));
 }
 
 void Player::update(float dt)
@@ -28,13 +33,13 @@ void Player::update(float dt)
         shootTimer = SHOOT_DELAY;
 
         sf::Vector2f pos = this->getPosition();
-        Game::addEntity(std::make_unique<Bullet>(pos, sf::Color::White));
+        Game::addEntity(std::make_unique<Bullet>(pos));
     }
 }
 
 void Player::render(sf::RenderTexture &canvas)
 {
-    canvas.draw(*shape);
+    canvas.draw(sprite);
 }
 
 void Player::setVelocity(float x, float y)

@@ -1,8 +1,7 @@
 #include "Bullet.h"
 #include "Game.h"
 
-Bullet::Bullet(sf::Vector2f pos, sf::Color col)
-    : Entity(std::make_unique<sf::CircleShape>(2.f), pos, col), lifetime(BULLET_LIFE) {};
+Bullet::Bullet(sf::Vector2f pos) : Entity(pos), lifetime(BULLET_LIFE) {};
 
 void Bullet::update(float dt)
 {
@@ -16,5 +15,5 @@ void Bullet::update(float dt)
 }
 void Bullet::render(sf::RenderTexture &canvas)
 {
-    canvas.draw(*shape);
+    canvas.draw(sprite);
 }

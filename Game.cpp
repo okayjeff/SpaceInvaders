@@ -18,18 +18,17 @@ void Game::start()
 
 void Game::spawnPlayer()
 {
-    entities.push_back(std::make_unique<Player>(sf::Vector2f({CAM_WIDTH / 2, CAM_HEIGHT - 32}), sf::Color::White));
+    entities.push_back(std::make_unique<Player>(sf::Vector2f({CAM_WIDTH / 2, CAM_HEIGHT - 32})));
 }
 
 void Game::spawnEnemies()
 {
     float totalEnemiesToSpawn{CAM_WIDTH / ENEMY_PADDING};
-    std::cout << "Spawning " << totalEnemiesToSpawn << " enemies\n";
 
     for (int i = 1; i < totalEnemiesToSpawn; ++i)
     {
         sf::Vector2f pos{sf::Vector2f({static_cast<float>(ENEMY_PADDING * i), static_cast<float>(ENEMY_PADDING)})};
-        entities.push_back(std::make_unique<Enemy>(pos, sf::Color::Blue));
+        entities.push_back(std::make_unique<Enemy>(pos));
     }
 }
 
@@ -40,6 +39,8 @@ void Game::addEntity(std::unique_ptr<Entity> entity)
 
 void Game::update(sf::RenderTexture &canvas, float dt)
 {
+    canvas.clear(sf::Color::Black);
+
     addQueue.clear();
 
     for (auto &entity : entities)
@@ -55,4 +56,6 @@ void Game::update(sf::RenderTexture &canvas, float dt)
 
     entities.erase(std::remove_if(entities.begin(), entities.end(), [](auto &e) { return e->markedForRemoval; }),
                    entities.end());
+
+    canvas.display();
 }

@@ -1,9 +1,8 @@
 #include "Enemy.h"
 
-Enemy::Enemy(sf::Vector2f pos, sf::Color col)
-    : Entity(std::make_unique<sf::RectangleShape>(sf::Vector2f({16.f, 16.f})), pos, col)
+Enemy::Enemy(sf::Vector2f pos) : Entity(pos)
 {
-    shape->setOrigin({8.f, 8.f});
+    sprite.setOrigin({8.f, 8.f});
 }
 
 void Enemy::update(float dt)
@@ -16,5 +15,5 @@ void Enemy::update(float dt)
 
 void Enemy::render(sf::RenderTexture &canvas)
 {
-    canvas.draw(*shape);
+    canvas.draw(sprite);
 }

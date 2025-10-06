@@ -11,7 +11,7 @@ class Player : public Entity
     float speed{250.f};
 
   public:
-    Player(sf::Vector2f pos, sf::Color col);
+    Player(sf::Vector2f pos);
 
     void update(float dt) override;
 
