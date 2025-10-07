@@ -13,6 +13,8 @@ add_executable(SpaceInvaders main.cpp
         Enemy.h
         Bullet.cpp
         Bullet.h
+        TextureManager.h
+        TextureManager.cpp
 )
 
 find_package(SFML COMPONENTS Network Graphics Window Audio System CONFIG REQUIRED)
