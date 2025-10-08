@@ -9,6 +9,7 @@ constexpr float WINDOW_WIDTH{1920.f};
 constexpr float WINDOW_HEIGHT{1080.f};
 constexpr float CAM_WIDTH{320.f};
 constexpr float CAM_HEIGHT{180.f};
+constexpr float TILE_SIZE{16};
 
 constexpr int ENEMY_PADDING{32};
 

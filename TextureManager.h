@@ -8,7 +8,7 @@
 class TextureManager
 {
     static std::string filename;
-    static sf::Texture spriteSheet;
+    static std::unique_ptr<sf::Texture> spriteSheet;
     static int tileSize;
     static bool loaded;
 

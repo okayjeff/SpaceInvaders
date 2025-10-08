@@ -7,15 +7,13 @@ class Entity
 {
     float SPEED{0.f};
     int TILE_WIDTH{16};
-    sf::Vector2<int> SPRITE_SHEET_POS{0, 0};
 
   public:
-    sf::Texture texture;
-    sf::Sprite sprite;
+    std::unique_ptr<sf::Sprite> sprite;
     sf::Vector2f velocity{0.f, 0.f};
     bool markedForRemoval{false};
 
-    Entity(sf::Vector2f pos) : sprite(texture)
+    Entity(sf::Vector2f pos) : sprite(nullptr)
     {
     }
 
@@ -26,12 +24,12 @@ class Entity
 
     sf::Vector2f getPosition() const
     {
-        return sprite.getPosition();
+        return sprite->getPosition();
     }
 
     void move(float x, float y)
     {
-        sprite.move({x, y});
+        sprite->move({x, y});
     }
 };
 

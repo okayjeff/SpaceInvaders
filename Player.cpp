@@ -1,14 +1,17 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Game.h"
+#include "TextureManager.h"
 
 sf::Texture texture("/Users/jeff/Development/CLionProjects/SpaceInvaders/assets/sprites/SpaceInvaders.png");
 sf::Vector2<int> SPRITE_SHEET_POS{4, 0};
 
 Player::Player(sf::Vector2f pos) : Entity(pos)
 {
-    sprite.setTexture(texture);
-    sprite.setTextureRect(sf::IntRect({4 * 16, 0}, {16, 16}));
+    sprite = std::make_unique<sf::Sprite>(TextureManager::getSpriteSheet());
+    sprite->setTextureRect(TextureManager::getPlayerRect());
+    sprite->setOrigin({TILE_SIZE / 2, TILE_SIZE / 2});
+    sprite->setPosition({0, 100});
 }
 
 void Player::update(float dt)
@@ -39,7 +42,7 @@ void Player::update(float dt)
 
 void Player::render(sf::RenderTexture &canvas)
 {
-    canvas.draw(sprite);
+    canvas.draw(*sprite);
 }
 
 void Player::setVelocity(float x, float y)

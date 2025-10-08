@@ -1,8 +1,10 @@
 #include "Enemy.h"
+#include "TextureManager.h"
 
 Enemy::Enemy(sf::Vector2f pos) : Entity(pos)
 {
-    sprite.setOrigin({8.f, 8.f});
+    sprite = std::make_unique<sf::Sprite>(TextureManager::getSpriteSheet());
+    sprite->setTextureRect(TextureManager::getEnemyRect());
 }
 
 void Enemy::update(float dt)
@@ -15,5 +17,5 @@ void Enemy::update(float dt)
 
 void Enemy::render(sf::RenderTexture &canvas)
 {
-    canvas.draw(sprite);
+    canvas.draw(*sprite);
 }
